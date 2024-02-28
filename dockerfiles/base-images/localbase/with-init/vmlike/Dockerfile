@@ -16,5 +16,6 @@ RUN apt update \
     && apt upgrade -y \
     && apt install -y init zsh vim ssh iproute2 \
     && apt autoclean -y \
-    && sed -i '/#PermitRootLogin prohibit-password/a PermitRootLogin yes' $SSHD_CONFIG
+    && sed -i '/#PermitRootLogin prohibit-password/a PermitRootLogin yes' $SSHD_CONFIG \
+    && chsh -s $(which zsh)
 ENTRYPOINT ["/sbin/init"]
